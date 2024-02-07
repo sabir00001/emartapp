@@ -38,6 +38,16 @@ stages:
         projectName: 'vprofile'
         action: 'Run a Docker Compose command'
         dockerComposeCommand: 'build'
+    - task: Docker@2
+      inputs:
+        containerRegistry: 'akspractice01'
+        command: 'login'
+    - task: Docker@2
+      inputs:
+        containerRegistry: 'akspractice01'
+        repository: 'emartapp2'
+        command: 'push'
+        tags: $(tag)
         
       
       
