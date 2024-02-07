@@ -47,7 +47,7 @@ stages:
         containerRegistry: 'akspractice01'
         repository: 'emartapp2'
         command: 'push'
-        tags: $(tag)
+        tags: latest 
         
       
       
