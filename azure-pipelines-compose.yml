@@ -38,10 +38,7 @@ stages:
         projectName: 'vprofile'
         action: 'Run a Docker Compose command'
         dockerComposeCommand: 'build'
-    - task: Docker@2
-      inputs:
-        containerRegistry: 'akspractice01'
-        command: 'login'
+        includeLatestTag: true
     - task: Docker@2
       inputs:
         containerRegistry: 'akspractice01'
