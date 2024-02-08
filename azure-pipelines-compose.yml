@@ -40,13 +40,14 @@ stages:
         dockerComposeCommand: 'build'
         includeLatestTag: true
     - task: DockerCompose@0
-      displayName: Push services
       inputs:
-        action: Push services
+        containerregistrytype: 'Azure Container Registry'
         azureSubscription: 'aks-rg-connection'
-        azureContainerRegistry: Azure Container Registry
-        dockerComposeFile: docker-compose.yml
-        projectName: vprofile
+        azureContainerRegistry: '{"loginServer":"akspractice01.azurecr.io", "id" : "/subscriptions/410c1a95-68f7-4b30-9fdc-964a1658482d/resourceGroups/AKS-Practice/providers/Microsoft.ContainerRegistry/registries/akspractice01"}'
+        dockerComposeFile: '**/docker-compose.yml'
+        projectName: 
+        action: 'Push services'
+        includeSourceTags: true
         includeLatestTag: true
         
 
