@@ -39,12 +39,16 @@ stages:
         action: 'Run a Docker Compose command'
         dockerComposeCommand: 'build'
         includeLatestTag: true
-    - task: Docker@2
+    - task: DockerCompose@0
+      displayName: Push services
       inputs:
-        containerRegistry: 'akspractice01'
-        repository: 'vprofile'
-        command: 'push'
-        tags: latest
+        action: Push services
+        azureSubscription: 'aks-rg-connection'
+        azureContainerRegistry: Azure Container Registry
+        dockerComposeFile: docker-compose.yml
+        projectName: vprofile
+        includeLatestTag: true
+        
 
         
       
