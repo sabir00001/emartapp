@@ -20,7 +20,28 @@ variables:
   # Agent VM image name
   Name: devops-agent-01
 
+
 stages:
+- stage: Build
+  displayName: Build and push stage
+  jobs:
+  - job: Build
+    displayName: Build
+    pool:
+      name: devops-agent-01
+    steps:
+
+      - task: Npm@1
+        inputs:
+         command: 'install'
+         workingDir: 
+      - task: Npm@1
+        inputs:
+          command: 'custom'
+          customCommand: 'run build --prod'
+
+
+
 - stage: Build
   displayName: Build and push stage
   jobs:
