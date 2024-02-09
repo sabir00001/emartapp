@@ -34,7 +34,10 @@ stages:
         
     - task: CmdLine@2
       inputs:
-        script: 'npm run build --prod'
+        script: |
+          npm install -g n
+          n lts
+          npm run build --prod
         workingDirectory: '$(Build.SourcesDirectory)/client'
 
     - task: DockerCompose@0
