@@ -31,13 +31,11 @@ stages:
       inputs:
         command: 'install'
         workingDir: '$(Build.SourcesDirectory)/client'
-    
-    - task: Npm@1
-      displayName: 'Run Build'
+        
+    - task: CmdLine@2
       inputs:
-        command: 'custom'
-        workingDir: '$(Build.SourcesDirectory)/client'
-        customCommand: 'run build -- --prod'
+        script: 'run build --prod'
+        workingDirectory: '$(Build.SourcesDirectory)client'
 
     - task: DockerCompose@0
       displayName: 'Docker Compose Build'
