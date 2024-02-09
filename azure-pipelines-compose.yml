@@ -30,14 +30,14 @@ stages:
       displayName: 'Install Dependencies'
       inputs:
         command: 'install'
-        workingDir: '$(Build.SourcesDirectory)'
+        workingDir: '$(Build.SourcesDirectory)/client'
     
     - task: Npm@1
       displayName: 'Run Build'
       inputs:
         command: 'custom'
+        workingDir: '$(Build.SourcesDirectory)/client'
         customCommand: 'run build --prod'
-        workingDir: '$(Build.SourcesDirectory)'
 
     - task: DockerCompose@0
       displayName: 'Docker Compose Build'
