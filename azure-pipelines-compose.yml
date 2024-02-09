@@ -39,9 +39,9 @@ stages:
         azureSubscription: 'aks-rg-connection'
         azureContainerRegistry: 'akspractice01.azurecr.io'
         dockerComposeFile: '$(dockerfilePath)'
+        projectName: 'emartapp'
         action: 'Run a Docker Compose command'
         dockerComposeCommand: 'build'
-        includeSourceTags: true
 
     - task: DockerCompose@0
       displayName: 'Push Docker Compose Services'
@@ -50,6 +50,7 @@ stages:
         azureSubscription: 'aks-rg-connection'
         azureContainerRegistry: 'akspractice01.azurecr.io'
         dockerComposeFile: '$(dockerfilePath)'
+        projectName: 'emartapp'
         action: 'Push services'
         includeSourceTags: true
      
