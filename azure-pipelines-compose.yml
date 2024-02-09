@@ -35,7 +35,7 @@ stages:
     - task: CmdLine@2
       inputs:
         script: 'run build --prod'
-        workingDirectory: '$(Build.SourcesDirectory)client'
+        workingDirectory: '$(Build.SourcesDirectory)/client'
 
     - task: DockerCompose@0
       displayName: 'Docker Compose Build'
