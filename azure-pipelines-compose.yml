@@ -37,7 +37,7 @@ stages:
       inputs:
         command: 'custom'
         workingDir: '$(Build.SourcesDirectory)/client'
-        customCommand: 'run build --prod'
+        customCommand: 'run build -- --prod'
 
     - task: DockerCompose@0
       displayName: 'Docker Compose Build'
