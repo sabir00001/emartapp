@@ -35,23 +35,20 @@ stages:
     - task: DockerCompose@0
       displayName: 'Docker Compose Build'
       inputs:
-        containerregistrytype: 'Azure Container Registry'
-        azureSubscription: 'aks-rg-connection'
-        azureContainerRegistry: 'akspractice01.azurecr.io'
+        containerregistrytype: 'Container Registry'
+        dockerRegistryEndpoint: 'acr-connection'
         dockerComposeFile: '$(dockerfilePath)'
         projectName: 'emartapp'
         action: 'Run a Docker Compose command'
         dockerComposeCommand: 'build'
-        additionalImageTags: $(Build.BuildId)
 
     - task: DockerCompose@0
       displayName: 'Push Docker Compose Services'
       inputs:
-        containerregistrytype: 'Azure Container Registry'
-        azureSubscription: 'aks-rg-connection'
-        azureContainerRegistry: 'akspractice01.azurecr.io'
+        containerregistrytype: 'Container Registry'
+        dockerRegistryEndpoint: 'acr-connection'
         dockerComposeFile: '$(dockerfilePath)'
         projectName: 'emartapp'
         action: 'Push services'
-        additionalImageTags: $(Build.BuildId)
+        additionalImageTags: '$(Build.BuildId)'
      
