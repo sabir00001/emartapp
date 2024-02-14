@@ -10,7 +10,7 @@ variables:
   # Container registry service connection established during pipeline creation
   dockerRegistryServiceConnection: '896bf226-9d8b-4a11-a630-5355ab4490cc'
   imageRepository: 'sabiremartapp1'
-  containerRegistry: 'akspractice01.azurecr.io'
+  containerRegistry: 'aksprodacr.azurecr.io'
   dockerfilePath: '$(Build.SourcesDirectory)/docker-compose.yaml'
   tag: '$(Build.BuildId)'
 
