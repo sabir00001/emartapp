@@ -41,6 +41,7 @@ stages:
         projectName: 'emartapp'
         action: 'Run a Docker Compose command'
         dockerComposeCommand: 'build'
+        includeSourceTags: true
         additionalImageTags: '$(Build.BuildId)'
 
     - task: DockerCompose@0
@@ -51,5 +52,6 @@ stages:
         dockerComposeFile: '$(dockerfilePath)'
         projectName: 'emartapp'
         action: 'Push services'
+        includeSourceTags: true
         additionalImageTags: '$(Build.BuildId)'
      
