@@ -1,7 +1,7 @@
 name: etmart-app-build-$(Build.BuildId)
 
 trigger:
-- '*'
+- main
 
 resources:
 - repo: self
@@ -42,7 +42,6 @@ stages:
         action: 'Run a Docker Compose command'
         dockerComposeCommand: 'build'
         includeSourceTags: true
-        additionalImageTags: '$(Build.BuildId)'
 
     - task: DockerCompose@0
       displayName: 'Push Docker Compose Services'
@@ -53,5 +52,4 @@ stages:
         projectName: 'emartapp'
         action: 'Push services'
         includeSourceTags: true
-        additionalImageTags: '$(Build.BuildId)'
      
