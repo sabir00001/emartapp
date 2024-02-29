@@ -24,7 +24,7 @@ stages:
   - job: Build
     displayName: Build
     pool:
-      name: $(Name)
+      name: devops-agent-01
     steps:
     - task: Npm@1
       displayName: 'Install Dependencies'
@@ -42,15 +42,15 @@ stages:
         action: 'Run a Docker Compose command'
         dockerComposeCommand: 'build'
         includeSourceTags: true
+
 - stage: Publsih
   displayName: Dcoker-Publish
   jobs:
   - job: publish
     displayName: Publish-images
     pool:
-      name: $(Name)
+      name: devops-agent-01
     steps:
-      - 
     - task: DockerCompose@0
       displayName: 'Push Docker Compose Services'
       inputs:
