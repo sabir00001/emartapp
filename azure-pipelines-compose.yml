@@ -42,7 +42,15 @@ stages:
         action: 'Run a Docker Compose command'
         dockerComposeCommand: 'build'
         includeSourceTags: true
-
+- stage: Publsih
+  displayName: Dcoker-Publish
+  jobs:
+  - job: publish
+    displayName: Publish-images
+    pool:
+      name: $(Name)
+    steps:
+      - 
     - task: DockerCompose@0
       displayName: 'Push Docker Compose Services'
       inputs:
