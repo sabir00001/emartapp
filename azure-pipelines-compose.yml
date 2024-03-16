@@ -5,8 +5,7 @@ trigger:
 
 resources:
 - repo: self
-pool:
-  name: devops-agent-01
+
 
 variables:
   # Container registry service connection established during pipeline creation
