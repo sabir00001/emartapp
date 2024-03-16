@@ -5,6 +5,8 @@ trigger:
 
 resources:
 - repo: self
+pool:
+  vmImage: ubuntu-latest
 
 variables:
   # Container registry service connection established during pipeline creation
@@ -15,7 +17,8 @@ variables:
   tag: '$(Build.BuildId)'
 
   # Agent VM image name
-  Name: devops-agent-01
+  #Name: devops-agent-01
+  
 
 stages:
 - stage: Build
@@ -23,8 +26,9 @@ stages:
   jobs:
   - job: Build
     displayName: Build
-    pool:
-      name: devops-agent-01
+    #pool:
+      #name: devops-agent-01
+      #vmImage: 'ubuntu-latest'
     steps:
     - task: Npm@1
       displayName: 'Install Dependencies'
@@ -47,8 +51,8 @@ stages:
   jobs:
   - job: publish
     displayName: Publish-images
-    pool:
-      name: devops-agent-01
+    #pool:
+      #name: devops-agent-01
     steps:
     - task: DockerCompose@0
       displayName: 'Push Docker Compose Services'
