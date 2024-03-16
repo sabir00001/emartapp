@@ -25,9 +25,6 @@ stages:
   jobs:
   - job: Build
     displayName: Build
-    pool:
-      name: devops-agent-01
-      #vmImage: 'ubuntu-latest'
     steps:
     - task: Npm@1
       displayName: 'Install Dependencies'
@@ -50,8 +47,6 @@ stages:
   jobs:
   - job: publish
     displayName: Publish-images
-    #pool:
-      #name: devops-agent-01
     steps:
     - task: DockerCompose@0
       displayName: 'Push Docker Compose Services'
