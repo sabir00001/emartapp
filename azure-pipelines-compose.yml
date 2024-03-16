@@ -10,7 +10,7 @@ variables:
   # Container registry service connection established during pipeline creation
   dockerRegistryServiceConnection: '896bf226-9d8b-4a11-a630-5355ab4490cc'
   imageRepository: 'sabiremartapp1'
-  containerRegistry: 'aksprodacr.azurecr.io'
+  containerRegistry: 'sabirchoudhury001'
   dockerfilePath: '$(Build.SourcesDirectory)/docker-compose.yaml'
   tag: '$(Build.BuildId)'
 
@@ -36,12 +36,11 @@ stages:
       displayName: 'Docker Compose Build'
       inputs:
         containerregistrytype: 'Container Registry'
-        dockerRegistryEndpoint: 'acr-connection'
+        dockerRegistryEndpoint: 'maf-dockerhub-connection'
         dockerComposeFile: '$(dockerfilePath)'
         projectName: 'emartapp'
         action: 'Run a Docker Compose command'
         dockerComposeCommand: 'build'
-        includeSourceTags: true
 
 - stage: Publsih
   displayName: Dcoker-Publish
@@ -55,9 +54,10 @@ stages:
       displayName: 'Push Docker Compose Services'
       inputs:
         containerregistrytype: 'Container Registry'
-        dockerRegistryEndpoint: 'acr-connection'
+        dockerRegistryEndpoint: 'maf-dockerhub-connection'
         dockerComposeFile: '$(dockerfilePath)'
         projectName: 'emartapp'
         action: 'Push services'
         includeSourceTags: true
+        includeLatestTag: true
      
