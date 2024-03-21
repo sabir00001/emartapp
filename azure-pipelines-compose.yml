@@ -54,6 +54,5 @@ stages:
         dockerComposeFile: '$(dockerfilePath)'
         projectName: 'emartapp'
         action: 'Push services'
-        includeSourceTags: true
         includeLatestTag: true
      
