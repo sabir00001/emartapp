@@ -33,8 +33,9 @@ stages:
     - task: DockerCompose@0
       displayName: 'Docker Compose Build'
       inputs:
-        containerregistrytype: 'Container Registry'
-        dockerRegistryEndpoint: 'maf-dockerhub-connection'
+        containerregistrytype: 'Azure Container Registry'
+        azureSubscription: 'azure-learn'
+        azureContainerRegistry: '{"loginServer":"mafacr01.azurecr.io", "id" : "/subscriptions/9734dba5-b9e0-4249-9973-b3fb22b06d24/resourceGroups/aks-rg-acr/providers/Microsoft.ContainerRegistry/registries/mafacr01"}'
         dockerComposeFile: '$(dockerfilePath)'
         projectName: 'emartapp'
         action: 'Run a Docker Compose command'
@@ -49,8 +50,9 @@ stages:
     - task: DockerCompose@0
       displayName: 'Push Docker Compose Services'
       inputs:
-        containerregistrytype: 'Container Registry'
-        dockerRegistryEndpoint: 'maf-dockerhub-connection'
+        containerregistrytype: 'Azure Container Registry'
+        azureSubscription: 'azure-learn'
+        azureContainerRegistry: '{"loginServer":"mafacr01.azurecr.io", "id" : "/subscriptions/9734dba5-b9e0-4249-9973-b3fb22b06d24/resourceGroups/aks-rg-acr/providers/Microsoft.ContainerRegistry/registries/mafacr01"}'
         dockerComposeFile: '$(dockerfilePath)'
         projectName: 'emartapp'
         action: 'Push services'
