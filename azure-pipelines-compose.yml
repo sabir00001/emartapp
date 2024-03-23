@@ -43,6 +43,7 @@ stages:
 
 - stage: Publsih
   displayName: Dcoker-Publish
+  dependsOn: Build
   jobs:
   - job: publish
     displayName: Publish-images
