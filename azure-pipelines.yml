@@ -11,9 +11,12 @@ resources:
 variables:
   # Container registry service connection established during pipeline creation
   dockerRegistryServiceConnection: '3e914b6d-fd13-4129-8a14-6f1dff079db9'
-  imageRepository: 'emartappdocker'
+  imageRepository: 'emart'
   containerRegistry: 'mafacr01.azurecr.io'
-  dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
+  dockerfilePath: '$(Build.SourcesDirectory)'
+  client: '$(Build.SourcesDirectory)/client'
+  javaapi: '$(Build.SourcesDirectory)/javaapi'
+  nodeapi: '$(Build.SourcesDirectory)/nodeapi'
   tag: '$(Build.BuildId)'
 
 # Agent VM image name
@@ -22,7 +25,7 @@ pool:
 
 stages:
 - stage: Build
-  displayName: Build emart node api and push stage
+  displayName: Build emart client
   jobs:
   - job: Build
     displayName: Build
@@ -31,7 +34,7 @@ stages:
       displayName: Build and push an image to container registry
       inputs:
         containerRegistry: 'maf-acr01-connection'
-        repository: '$(imageRepository)'
+        repository: '$(imageRepository)-client'
         command: 'buildAndPush'
-        Dockerfile: '**/Dockerfile'
+        Dockerfile: '$(Build.SourcesDirectory)/client/Dockerfile'
         tags: '$(tag)'
