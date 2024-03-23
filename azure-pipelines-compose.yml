@@ -40,14 +40,6 @@ stages:
         projectName: 'emartapp'
         action: 'Run a Docker Compose command'
         dockerComposeCommand: 'build'
-
-- stage: Publsih
-  displayName: Dcoker-Publish
-  dependsOn: Build
-  jobs:
-  - job: publish
-    displayName: Publish-images
-    steps:
     - task: DockerCompose@0
       displayName: 'Push Docker Compose Services'
       inputs:
