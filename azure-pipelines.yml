@@ -11,8 +11,8 @@ resources:
 variables:
   # Container registry service connection established during pipeline creation
   dockerRegistryServiceConnection: '3e914b6d-fd13-4129-8a14-6f1dff079db9'
-  imageRepository: 'sabiremartapp'
-  containerRegistry: 'akspractice01.azurecr.io'
+  imageRepository: 'emartappdocker'
+  containerRegistry: 'mafacr01.azurecr.io'
   dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
   tag: '$(Build.BuildId)'
 
@@ -32,7 +32,7 @@ stages:
     - task: Docker@2
       displayName: Build and push an image to container registry
       inputs:
-        containerRegistry: 'acr-connection'
+        containerRegistry: 'mafacr01'
         repository: '$(imageRepository)'
         command: 'buildAndPush'
         Dockerfile: '**/Dockerfile'
