@@ -49,5 +49,6 @@ stages:
         dockerComposeFile: '$(dockerfilePath)'
         projectName: 'emartapp'
         action: 'Push services'
-        includeLatestTag: true
+        additionalImageTags: '$(Build.BuildId)'
+
      
